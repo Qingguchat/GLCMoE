@@ -1,0 +1,53 @@
+seed: 42
+data:
+  mat_file: C:\Users\Admin\Desktop\GLCMoE with DCL\data\BDGP.mat
+train:
+  device: cuda:0
+  log_dir: final_enhanced_logs/
+  checkpoint_dir: final_enhanced_checkpoints/
+  batch_size: 256
+  num_workers: 4
+  epochs: 120
+  lr: 0.0001
+  weight_decay: 0.0005
+  gl_temp: 0.45
+  rec_weight: 0.5
+  ctr_weight: 0.85
+  global_local_weight: 0.9
+  bal_loc_weight: 0.1
+  bal_glo_weight: 0.1
+  kmeans_n_init: 200
+inference:
+  device: cuda
+  batch_size: 128
+  num_workers: 4
+  kmeans_n_init: 200
+  result_dir: results/
+model:
+  feature_dim: 512
+  local_output_dim: 512
+  temp: 0.33
+  num_clusters: 5
+  dropout: 0.3
+  proj_dim: 256
+transformer:
+  nhead: 4
+  num_encoder_layers: 2
+  dim_feedforward: 512
+local_moe:
+  num_experts: 8
+  top_k: 2
+  expert_hidden_dims:
+  - 256
+  - 128
+  expert_output_dim: 512
+  router_hidden_dim: 256
+  router_tau: 1.0
+global_moe:
+  num_experts: 8
+  top_k: 2
+  expert_hidden_dims:
+  - 512
+  expert_output_dim: 512
+  router_tau: 0.95
+  router_hidden_dim: 384
