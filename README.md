@@ -13,7 +13,7 @@ We propose GLCMoE-DCL, a deep multi-view clustering framework that learns comple
 
 * The gating routing-balance regularizer is designed to alleviate the expert collapse and improve the availability of experts.
 
-The overview framework of the proposed GLCMoE for DMvC task.
+The overview framework of the proposed GLCMoE for DMvC task:
 
 ![GLCMoE](./GLCMoE.png)
 
