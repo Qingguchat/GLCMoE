@@ -5,20 +5,15 @@ PyTorch Repo for “Global-and-Local Collaborative Mixture-of-Experts with Dual 
 
 We propose GLCMoE-DCL, a deep multi-view clustering framework that learns complementary and consistent semantics across views via a collaboration of Local and Global MoEs with dual contrastive learning:
 
-* Local MoE (LMoE): a shared expert bank with view-specific routers (Top-K) produces view-level features and filters heterogeneity.
+* Local MoE (LMoE): The LMoE filters cross-view heterogeneity via parameters shared expert bank and preserves complementarity rich in fine-grained view-specific information by collaborative experts that are adaptively activated and reorganized via gating routing mechanism.
 
-* Transformer Aggregator: fuses local view features into a compact local-fusion representation.
+* Global MoE (GMoE): The GMoE with attention-based routing focuses on extracting cross-view consistency and capturing high-order cross-view interaction from unified multi-view feature space.
 
-* Global MoE (GMoE): an attention-routed MoE on the concatenated feature space models high-order cross-view interactions to form a global representation.
+* Dual Contrastive Learning (DCL): The profound semantic alignment across views is achieved by DCL module from various levels, including coarse-grained granularity among local view-specific representations and fine-grained granularity between local fusion and global representation.
 
-* Dual Contrastive Learning (DCL):
+* The gating routing-balance regularizer is designed to alleviate the expert collapse and improve the availability of experts.
 
--Local↔Local InfoNCE for cross-view consistency,
-
--Global↔Local-Fusion InfoNCE for cross-level alignment.
-
-* Routing balance regularization prevents expert collapse.
-At inference, the clustering embedding is
+The overview framework of the proposed GLCMoE for DMvC task.
 
 ![GLCMoE](./GLCMoE.png)
 
